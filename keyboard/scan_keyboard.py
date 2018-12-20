@@ -4,23 +4,31 @@ import wave
 from audio_player import AudioPlayer
 import threading
 
-def key_press(key):
-    print(key.name)
-    audioPlayer = AudioPlayer(map_keysound(key.name))
-    thread = threading.Thread(target=audioPlayer.play)
-    thread.start()
+class Key_Scanner:
 
-def map_keysound(input_string):
-    char_list = [chr(i) for i in range(32, 127)]
-    sound_list = [int(i/11) for i in range(1, 95)]
-    
-    try:
-        return sound_list[char_list.index(input_string)]
-    except ValueError:
-        print("ValueError")
-        return "1"
+    def __init__(self):
+        self.audio_list = [AudioPlayer(self.map_keysound(str(i))) for i in range(1,9)]
 
-keyboard.on_press(key_press)
+    def key_press(self, key):
+        print(key.name)
+        thread = threading.Thread(target=self.audio_list[int(self.map_keysound(key.name))].play)
+        thread.start()
 
-while True:
-    time.sleep(1)
+    def map_keysound(self, input_string):
+        char_list = [chr(i) for i in range(32, 127)]
+        sound_list = [int(i/11) for i in range(0, 95)]
+        
+        try:
+            return sound_list[char_list.index(input_string)]
+        except ValueError:
+            print("ValueError")
+            return "1"
+
+    def start_scan(self):
+        keyboard.on_press(self.key_press)
+
+if __name__ == "__main__":
+    key_scanner = Key_Scanner()
+    key_scanner.start_scan()
+    while True:
+        time.sleep(1)
