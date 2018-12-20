@@ -1,10 +1,12 @@
+# coding: utf-8
+
 import keyboard
 import time
 import wave
 from audio_player import AudioPlayer
 import threading
 
-class Key_Scanner:
+class KeyScanner:
 
     def __init__(self):
         self.audio_list = [AudioPlayer(self.map_keysound(str(i))) for i in range(1,9)]
@@ -28,7 +30,7 @@ class Key_Scanner:
         keyboard.on_press(self.key_press)
 
 if __name__ == "__main__":
-    key_scanner = Key_Scanner()
+    key_scanner = KeyScanner()
     key_scanner.start_scan()
     while True:
         time.sleep(1)
