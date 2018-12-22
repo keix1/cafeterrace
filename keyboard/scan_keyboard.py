@@ -5,6 +5,7 @@ import time
 import wave
 from audio_player import AudioPlayer
 import threading
+import random
 
 class KeyScanner:
 
@@ -19,9 +20,11 @@ class KeyScanner:
     def map_keysound(self, input_string):
         char_list = [chr(i) for i in range(32, 127)]
         sound_list = [int(i/11) for i in range(0, 95)]
-        
+        rand = random.randint(1,8)
+        print(str(rand))
         try:
-            return sound_list[char_list.index(input_string)]
+            # return sound_list[char_list.index(input_string)]
+            return rand
         except ValueError:
             print("ValueError")
             return "1"
