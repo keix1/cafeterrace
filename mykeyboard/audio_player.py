@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import AppKit
 import time
 from pydub import AudioSegment
 from pydub.playback import play
