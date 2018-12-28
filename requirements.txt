@@ -1,2 +1,5 @@
 websocket-client
-
+keyboard
+pydub
+playsound
+tornado
