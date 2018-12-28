@@ -1,0 +1,1 @@
+web: python server/ws_server.py --port=$PORT
