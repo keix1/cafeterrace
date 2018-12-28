@@ -12,7 +12,6 @@ import json
 import ast
 import threading
 
-
 class WebsocketHandler:
     def __init__(self):
         self.host = "ws://localhost:8888/chatsocket"
