@@ -1,5 +1,6 @@
-websocket-client
+websocket-client==0.47.0
 keyboard
 pydub
 playsound
 tornado
+py2app
